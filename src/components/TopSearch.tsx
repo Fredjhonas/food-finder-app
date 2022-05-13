@@ -21,31 +21,27 @@ const TopSearch = ({ onChangeSearch, searchQuery, onRandomPress, loading }: ITop
             <Button
                 loading={loading}
                 icon="shuffle"
-                mode="contained"
+                mode="outlined"
                 compact
-                labelStyle={{ color: 'black' }}
+                labelStyle={{ color: 'white' }}
                 style={styles.randomButton}
-                onPress={() => onRandomPress()} />
+                onPress={() => onRandomPress()}> Random food</Button>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     content: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 20
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 20,
     },
     searchbar: {
-        margin: 25,
-        marginRight: 10,
-        width: '70%'
+        margin: 15,
+        width: '95%'
     },
     randomButton: {
-        backgroundColor: 'white',
-        width: 50,
-        margin: 25,
-        marginRight: 30,
+        backgroundColor: 'black',
         alignItems: 'center',
         justifyContent: 'center'
     }

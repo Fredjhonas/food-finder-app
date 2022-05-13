@@ -29,7 +29,7 @@ export default function App() {
             component={component}
             options={({ navigation }) => ({
               title: title,
-              headerLeft: () => iconLeft && <IconButton size={30} style={{ marginLeft: -15 }} icon='chevron-left' color='white' onPress={() => navigation.goBack()} />,
+              headerLeft: () => iconLeft && <IconButton size={30} icon='chevron-left' color='white' onPress={() => navigation.goBack()} />,
               headerRight: () => <LogoView />,
               headerTintColor: 'white',
               headerStyle: { backgroundColor: 'black' },

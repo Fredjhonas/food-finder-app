@@ -1,14 +1,8 @@
 import { useNavigation } from '@react-navigation/core';
 import { FlatList, StyleSheet, SafeAreaView } from 'react-native'
-import { Card } from 'react-native-paper'
+import { Card, Button } from 'react-native-paper'
 
-
-interface IFoodListProps {
-    foods: any;
-}
-
-const FoodList = ({ foods }: IFoodListProps) => {
-    console.log('Foods: ', foods);
+const FoodList = ({ foods }: any) => {
     const navigation = useNavigation();
 
     return (
@@ -17,9 +11,12 @@ const FoodList = ({ foods }: IFoodListProps) => {
                 data={foods}
                 renderItem={({ item }) => {
                     return (
-                        <Card style={styles.item} onPress={() => navigation.navigate('Detail')}>
+                        <Card style={styles.item} onPress={() => navigation.navigate('Detail', { food: item })}>
                             <Card.Title title={item.strMeal} />
                             <Card.Cover style={styles.cover} source={{ uri: item.strMealThumb }} />
+                            <Card.Actions>
+                                <Button onPress={() => navigation.navigate('Detail', { food: item })}>See recipe</Button>
+                            </Card.Actions>
                         </Card>
                     )
                 }}
@@ -32,10 +29,8 @@ const FoodList = ({ foods }: IFoodListProps) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
     },
     item: {
-        backgroundColor: 'white',
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,
