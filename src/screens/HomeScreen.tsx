@@ -30,7 +30,12 @@ const HomeScreen = () => {
     }
     return (
         <MainContainer>
-            <TopSearch searchQuery={searchQuery} onChangeSearch={onChangeSearch} onRandomPress={onRandomPress} loading={loading} />
+            <TopSearch
+                searchQuery={searchQuery}
+                onChangeSearch={onChangeSearch}
+                onRandomPress={onRandomPress}
+                loading={loading}
+            />
             {foods?.length > 0 && <FoodList foods={foods} />}
         </MainContainer>
     )
