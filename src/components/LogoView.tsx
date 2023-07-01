@@ -1,12 +1,11 @@
 import { View, StyleSheet } from 'react-native'
-import { Button, Headline } from 'react-native-paper'
+import { Button, Headline, IconButton } from 'react-native-paper'
 
 const LogoView = () => {
     return (
         <View style={styles.textContent}>
-            <Headline style={{ color: 'white' }}>Food Finder</Headline>
-            <Button icon='food' labelStyle={{ color: 'white', fontSize: 22 }}>
-            </Button>
+            <Headline style={{ color: 'white', fontSize: 24 }}>Food Finder</Headline>
+            <IconButton icon='food' color='white' size={22} style={{ margin: 0 }} />
         </View>
     )
 }
@@ -14,10 +13,8 @@ const LogoView = () => {
 const styles = StyleSheet.create({
     textContent: {
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        marginRight: -15,
-        width: 200,
+        alignItems: 'flex-end',
+        // width: 200,
     }
 })
 

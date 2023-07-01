@@ -12,10 +12,18 @@ const FoodList = ({ foods }: any) => {
                 renderItem={({ item }) => {
                     return (
                         <Card style={styles.item} onPress={() => navigation.navigate('Detail', { food: item })}>
-                            <Card.Title style={styles.title} title={item.strMeal} />
+                            <Card.Title style={styles.title} title={item.strMeal} titleStyle={{ margin: 0, padding: 0 }} />
                             <Card.Cover style={styles.cover} source={{ uri: item.strMealThumb }} />
-                            <Card.Actions>
-                                <Button onPress={() => navigation.navigate('Detail', { food: item })}>See recipe</Button>
+                            <Card.Actions style={styles.action}>
+                                <Button
+                                    mode='outlined'
+                                    onPress={() => navigation.navigate('Detail', { food: item })}
+                                    style={{ borderRadius: 40, backgroundColor: 'black', padding: 5 }}
+                                    labelStyle={{ color: 'white' }}
+                                    icon="arrow-right"
+                                >
+                                    Recipe Details
+                                </Button>
                             </Card.Actions>
                         </Card>
                     )
@@ -32,18 +40,27 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginBottom: 20,
+        // width: '100%',
     },
     item: {
         padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
+        borderRadius: 20,
+        marginBottom: 20,
     },
     cover: {
-        width: widthStyle,
+        // width: widthStyle,
         height: 300
     },
     title: {
         width: widthStyle,
+        paddingLeft: 0,
+    },
+    action: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        padding: 0,
+        paddingTop: 20
     }
 });
 

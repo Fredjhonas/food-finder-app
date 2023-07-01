@@ -15,6 +15,7 @@ const StackNavigation = () => {
             icon='chevron-left'
             color='white'
             onPress={() => navigation.goBack()}
+            style={{ margin: 0 }}
         />
     )
 
@@ -27,11 +28,12 @@ const StackNavigation = () => {
                     component={component}
                     options={({ navigation }) => ({
                         title: title,
-                        headerLeft: () => iconLeft && LeftIcon(navigation),
+                        // headerLeft: () => iconLeft && LeftIcon(navigation),
                         headerRight: () => <LogoView />,
                         headerTintColor: 'white',
                         headerStyle: { backgroundColor: 'black' },
                         statusBarStyle: 'dark',
+                        headerTitleStyle: { fontSize: 24 },
                     })}
                 />
             ))}

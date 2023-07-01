@@ -14,7 +14,7 @@ const FoodIngredient = ({ item }: any) => {
         return (
             <View>
                 {ingredients.map((ing, index) => (
-                    <Text key={index}> - {ing}</Text>
+                    <Text key={index}>-{ing}</Text>
                 ))}
             </View>
         )
@@ -22,7 +22,7 @@ const FoodIngredient = ({ item }: any) => {
 
     return (
         <Card.Content style={{ marginBottom: 20 }}>
-            <Title>Ingredients</Title>
+            <Title style={{ backgroundColor: 'white', borderRadius: 0, paddingBottom: 5 }}>Ingredients:</Title>
             {orderIngredients(item)}
         </Card.Content>
     )

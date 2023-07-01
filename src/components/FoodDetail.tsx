@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { StyleSheet, ScrollView, Platform } from 'react-native'
+import { StyleSheet, ScrollView, Platform, View } from 'react-native'
 import { Card, Title, Paragraph } from 'react-native-paper'
 import { WebViewNativeEvent } from 'react-native-webview/lib/WebViewTypes';
 
 // components
 import FoodIngredient from './FoodIngredient';
 import FoodVideo from './FoodVideo';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const FoodDetail = ({ item }: any) => {
@@ -19,20 +20,22 @@ const FoodDetail = ({ item }: any) => {
     let currentPlatformStyle = Platform.OS === 'web' && window.innerWidth > 800 ? [styles.item, styles.itemWeb] : styles.item
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
             {item !== null && (
                 <Card style={currentPlatformStyle}>
                     <Card.Title title={item.strMeal} subtitle={item.strCategory} />
                     <FoodVideo url={item.strYoutube} loading={loading} changeLoading={changeLoading} />
-                    <FoodIngredient item={item} />
-                    <Card.Content>
-                        <Title>Preparation</Title>
-                        <Paragraph>{item.strInstructions}</Paragraph>
-                    </Card.Content>
+                    <ScrollView contentContainerStyle={{ paddingBottom: 20, paddingTop: 20 }}>
+                        <FoodIngredient item={item} />
+                        <Card.Content>
+                            <Title style={{ backgroundColor: 'white', borderRadius: 0, paddingBottom: 5 }}>Preparation:</Title>
+                            <Paragraph>{item.strInstructions}</Paragraph>
+                        </Card.Content>
+                    </ScrollView>
                 </Card>
             )
             }
-        </ScrollView >
+        </View >
     )
 }
 
@@ -41,9 +44,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     item: {
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
+        backgroundColor: 'transparent',
+        padding: 10,
+        // marginVertical: 8,
+        // marginHorizontal: 16,
     },
     itemWeb: {
         width: '50%',

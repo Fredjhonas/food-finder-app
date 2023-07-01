@@ -29,7 +29,7 @@ const FoodVideo = ({ url, loading, changeLoading }: IFoodVideoProps) => {
 const styles = StyleSheet.create({
     video: {
         marginBottom: 20,
-        height: 350
+        height: 400,
     },
 })
 

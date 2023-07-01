@@ -34,16 +34,21 @@ const styles = StyleSheet.create({
     content: {
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 20,
+        marginBottom: 20,
+        marginTop: 20,
+        width: '100%',
     },
     searchbar: {
-        margin: 15,
-        width: '95%'
+        marginBottom: 15,
+        borderRadius: 40,
     },
     randomButton: {
         backgroundColor: 'black',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 20,
+        borderRadius: 40,
+        padding: 5
     }
 })
 

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { api } from "../api";
 import FoodList from "../components/FoodList"
 import TopSearch from "../components/TopSearch"
 import MainContainer from "../layout/MainContainer"
+import { View } from "react-native";
 
 const HomeScreen = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -11,11 +12,8 @@ const HomeScreen = () => {
 
     const onChangeSearch = async (query: string) => {
         setSearchQuery(query);
-
-        if (query.length > 3) {
-            let data = await api.getByName(query);
-            setFoods(data);
-        }
+        let data = await api.getByName(query);
+        setFoods(data);
     }
 
     const onRandomPress = async () => {
@@ -28,15 +26,21 @@ const HomeScreen = () => {
 
         setLoading(false);
     }
+
+    useEffect(() => {
+        onChangeSearch(searchQuery);
+    }, [])
     return (
         <MainContainer>
-            <TopSearch
-                searchQuery={searchQuery}
-                onChangeSearch={onChangeSearch}
-                onRandomPress={onRandomPress}
-                loading={loading}
-            />
-            {foods?.length > 0 && <FoodList foods={foods} />}
+            <View style={{ padding: 20 }}>
+                <TopSearch
+                    searchQuery={searchQuery}
+                    onChangeSearch={onChangeSearch}
+                    onRandomPress={onRandomPress}
+                    loading={loading}
+                />
+                {foods?.length > 0 && <FoodList foods={foods} />}
+            </View>
         </MainContainer>
     )
 }
